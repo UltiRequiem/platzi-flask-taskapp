@@ -1,4 +1,4 @@
 # Python Virtual Enviroment
-./env/*
+env/*
 # Cache
 ./__pycache__/*
