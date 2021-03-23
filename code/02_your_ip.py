@@ -6,5 +6,6 @@ app = Flask(__name__)
 def hello():
     user_ip = request.remote_addr
     return f'Hello World Platzi, tu IP es{user_ip}'
+
 if __name__ == '__main__':
     app.run(debug=True)
