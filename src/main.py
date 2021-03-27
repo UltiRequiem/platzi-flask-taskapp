@@ -1,20 +1,20 @@
 from flask import Flask, request,make_response, redirect, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='./templates', static_folder='./static')
 
-todos = ['Comprar Cafe', 'Enviar Solicitud de compra', 'Entregar video a productor']
+todos = ['Comprar Cafeina', 'Enviar 2 Solicitud de compra', 'Entregar video a productor']
 @app.route('/')
 def index():
     user_ip = request.remote_addr
 
-    response = make_response(redirect('/hello'))
+    response = make_response(redirect('/zero'))
     response.set_cookie('user_ip', user_ip)
 
     return response
 
 
-@app.route('/hello')
-def hello():
+@app.route('/zero')
+def zero():
 
     user_ip = request.cookies.get('user_ip')
     context = {
