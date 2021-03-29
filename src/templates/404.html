@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+404
+{% endblock %}
+
+{% block content %}
+        <h1>Esta pagina no se encuentra en nuestros servidores.</h1>
+        <p>{{ error }}</p>
+{% endblock %}
