@@ -4,6 +4,9 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+from threading import Thread
+import random
+
 
 app = Flask(__name__, template_folder='./templates', static_folder='./static')
 bootstrap = Bootstrap(app)
@@ -63,6 +66,18 @@ def not_found(error):
 def server_error(error):
     return render_template('500.html', error=error)
 
+def run():
+  app.run(
+		host='0.0.0.0',
+		port=random.randint(2000,9000)
+	)
+
+def keep_alive():
+	'''
+	Creates and starts new thread that runs the function run.
+	'''
+	t = Thread(target=run)
+	t.start()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+  keep_alive()
