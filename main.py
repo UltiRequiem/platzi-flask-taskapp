@@ -5,6 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 from threading import Thread
+import unittest
 import random
 
 
@@ -22,6 +23,10 @@ class LoginForm(FlaskForm):
     password = PasswordField('Contraseña', validators=[DataRequired()])
     submit = SubmitField('Enter')
 
+@app.cli.command()
+def test():
+    test = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(test)
 
 @app.route('/')
 def index():
@@ -73,9 +78,6 @@ def run():
 	)
 
 def keep_alive():
-	'''
-	Creates and starts new thread that runs the function run.
-	'''
 	t = Thread(target=run)
 	t.start()
 
