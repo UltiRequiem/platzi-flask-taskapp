@@ -2,6 +2,7 @@ from flask_testing import TestCase
 from flask import current_app, url_for
 from main import app
 
+
 class MainTest(TestCase):
     def create_app(self):
         app.config['TESTING'] = True
@@ -26,14 +27,11 @@ class MainTest(TestCase):
         self.assert200(response)
 
     def test_zero_post(self):
-        fake_form = {'username':'fake_user','password':'fake_password'}
-
-        response = self.client.post(url_for('zero'), data=fake_form)
-
-        self.assertRedirects(response, url_for('index'))
+        response = self.client.post(url_for('zero'))
+        self.assertTrue(response.status_code, 405)
 
     def test_auth_blueprint_exists(self):
-        self.assertIn('auth',self.app.blueprints)
+        self.assertIn('auth', self.app.blueprints)
 
     def test_auth_login_get(self):
         response = self.client.get(url_for('auth.login'))
