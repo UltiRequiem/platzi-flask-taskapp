@@ -1,26 +1,18 @@
 from flask import request, make_response, redirect, render_template, session
-from threading import Thread
 import unittest
-import random
-from app import create_app
 
-app = create_app()
+from keep_alive import keep_alive, app
 
 todos = ['Comprar Cafeina', 'Enviar 2 Solicitud de compra', 'Entregar video a productor']
 
 @app.cli.command()
 def test():
-    testy = unittest.TestLoader().discover('tests')
-    unittest.TextTestRunner().run(testy)
+    unittest.TextTestRunner().run(unittest.TestLoader().discover('tests'))
 
 @app.route('/')
 def index():
-    user_ip = request.remote_addr
-
-    response = make_response(redirect('/zero'))
-    session['user_ip'] = user_ip
-
-    return response
+    session['user_ip'] = request.remote_addr
+    return make_response(redirect('/zero'))
 
 @app.route('/zero', methods=['GET'])
 def zero():
@@ -37,13 +29,6 @@ def not_found(error):
 @app.errorhandler(500)
 def server_error(error):
     return render_template('500.html', error=error)
-
-def run():
-    app.run(host='0.0.0.0', port=random.randint(2000, 9000))
-
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
 
 if __name__ == '__main__':
     keep_alive()
