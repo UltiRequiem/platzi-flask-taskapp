@@ -44,10 +44,4 @@ class MainTest(TestCase):
         response = self.client.post(url_for('auth.login'), data=fake_form)
 
         self.assertRedirects(response, url_for('index'))
-'''
-    def test_auth_login_template(self):
-        self.client.get(url_for('auth.login'))
-
-        self.assertTemplateUsed('login.html')
-'''
 

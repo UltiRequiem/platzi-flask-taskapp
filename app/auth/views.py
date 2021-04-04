@@ -16,7 +16,7 @@ def login():
         username = login_form.username.data
         session['username'] = username
 
-        flash('Nombre de usario registrado con éxito!')
+        flash('¡Nombre de usuario registrado con éxito!')
 
         return redirect(url_for('index'))
 

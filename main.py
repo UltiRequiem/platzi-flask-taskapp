@@ -30,14 +30,6 @@ def zero():
 
     return render_template('hello.html', **context)
 
-@app.route('/pedro')
-def zero2():
-    user_ip = "hola"
-    username = "pedro"
-    context = {'user_ip': user_ip, 'todos': todos, 'username': username}
-
-    return render_template('hello.html', **context)
-
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html', error=error)
