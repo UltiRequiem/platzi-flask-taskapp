@@ -9,8 +9,8 @@ from . import auth
 def login():
     login_form = LoginForm()
     context = {
-        'login_form': login_form
-    }
+            'login_form': login_form
+            }
 
     if login_form.validate_on_submit():
         username = login_form.username.data
