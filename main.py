@@ -1,6 +1,7 @@
 from flask import request, make_response, redirect, render_template, session
+from flask_login import login_required
 import unittest
-
+from app.firestore_service import get_users, get_todos
 from keep_alive import keep_alive, app
 
 @app.cli.command()
@@ -13,10 +14,17 @@ def index():
     return make_response(redirect('/zero'))
 
 @app.route('/zero', methods=['GET'])
+@login_required
 def zero():
     user_ip = session.get('user_ip')
-    username = session.get('username')
-    context = {'user_ip': user_ip, 'todos':['Comprar cafeina', 'Enviar solicitudes de compra'], 'username': username}
+    username = current_user.id
+    context = {'user_ip': user_ip, 'todos':get_todos(user_id=username), 'username': username}
+    
+    users = get_users()
+    
+    for user in users:
+        print(user.id)
+        print(user.to_dict()['password'])
 
     return render_template('hello.html', **context)
 
