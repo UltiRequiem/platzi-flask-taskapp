@@ -33,7 +33,7 @@ def login():
 
                 flash('Bienvenido de nuevo')
 
-                redirect(url_for('hello'))
+                redirect(url_for('zero'))
             else:
                 flash('La informaición no coincide')
         else:
@@ -68,7 +68,7 @@ def signup():
 
             flash('Bienvenido!')
 
-            return redirect(url_for('hello'))
+            return redirect(url_for('zero'))
 
         else:
             flash('El usario existe!')
