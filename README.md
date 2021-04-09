@@ -41,7 +41,7 @@ Here is a working live demo: https://flask-platzi.ultirequiem.repl.co/auth/login
 At the moment it is running version [v0.7-alpha](https://github.com/UltiRequiem/Flask-Taskapp/releases/tag/v0.7-alpha), which did not implement a database yet.
  This is because I can't find a way to deploy it anywhere else without a credit card.
 
-**Current version: 1.0**
+**Current version: v1.0**
 
 It runs in [Repl.it](https://repl.it).
 
