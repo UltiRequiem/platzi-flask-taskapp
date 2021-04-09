@@ -2,24 +2,31 @@
 {% import 'macros.html' as macros %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% block title %} 
+{% block title %}
     {{ super() }}
-    Bienvenida 
+    Bienvenido
 {% endblock %}
 
 {% block content %}
     {% if username %}
-        <h1> Bienvenido, {{ username | capitalize}}.</h1>
+        <h1>Bienvenido, {{ username | capitalize }}</h1>
     {% endif %}
 
     {% if user_ip %}
-    <h3>Tu ip es {{ user_ip }}</h3>
+        <h3>Tu IP es {{ user_ip }}</h3>
     {% else %}
-        <a href="{{ url_for('index') }}">ir a inicio</a>
+        <a href="{{ url_for('index') }}">Ir a inicio</a>
     {% endif %}
-    <ul>
+
+    <div class="container">
+        <h2>Crea una nueva tarea</h2>
+
+        {{ wtf.quick_form(todo_form) }}
+    </div>
+
+    <ul class="list-group">
         {% for todo in todos %}
-            {{ macros.render_todo(todo) }}
+            {{ macros.render_todo(todo, delete_form, update_form) }}
         {% endfor %}
     </ul>
 {% endblock %}
