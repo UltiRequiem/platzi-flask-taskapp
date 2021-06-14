@@ -9,12 +9,10 @@ from app.firestore_service import get_user, user_put
 from app.models import UserModel, UserData
 
 
-@auth.route('/login', methods=['GET', 'POST'])
+@auth.route("/login", methods=["GET", "POST"])
 def login():
     login_form = LoginForm()
-    context = {
-        'login_form': login_form
-    }
+    context = {"login_form": login_form}
 
     if login_form.validate_on_submit():
         username = login_form.username.data
@@ -23,7 +21,7 @@ def login():
         user_doc = get_user(username)
 
         if user_doc.to_dict() is not None:
-            password_from_db = user_doc.to_dict()['password']
+            password_from_db = user_doc.to_dict()["password"]
 
             if password == password_from_db:
                 user_data = UserData(username, password)
@@ -31,25 +29,23 @@ def login():
 
                 login_user(user)
 
-                flash('Bienvenido de nuevo')
+                flash("Bienvenido de nuevo")
 
-                redirect(url_for('zero'))
+                redirect(url_for("zero"))
             else:
-                flash('La informaición no coincide')
+                flash("La informaición no coincide")
         else:
-            flash('El usario no existe')
+            flash("El usario no existe")
 
-        return redirect(url_for('index'))
+        return redirect(url_for("index"))
 
-    return render_template('login.html', **context)
+    return render_template("login.html", **context)
 
 
-@auth.route('signup', methods=['GET', 'POST'])
+@auth.route("signup", methods=["GET", "POST"])
 def signup():
     signup_form = LoginForm()
-    context = {
-        'signup_form': signup_form
-    }
+    context = {"signup_form": signup_form}
 
     if signup_form.validate_on_submit():
         username = signup_form.username.data
@@ -66,20 +62,21 @@ def signup():
 
             login_user(user)
 
-            flash('Bienvenido!')
+            flash("Bienvenido!")
 
-            return redirect(url_for('zero'))
+            return redirect(url_for("zero"))
 
         else:
-            flash('El usario existe!')
+            flash("El usario existe!")
 
-    return render_template('signup.html', **context)
+    return render_template("signup.html", **context)
 
 
-@auth.route('logout')
+@auth.route("logout")
 @login_required
 def logout():
     logout_user()
-    flash('Regresa pronto')
+    flash("Regresa pronto")
 
-    return redirect(url_for('auth.login'))
+    return redirect(url_for("auth.login"))
+

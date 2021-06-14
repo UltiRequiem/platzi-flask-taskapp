@@ -1,2 +1,2 @@
 class Config:
-    SECRET_KEY = 'SUPER SECRET KEY'
+    SECRET_KEY = "SUPER SECRET KEY"
