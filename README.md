@@ -6,6 +6,8 @@
 <a href="https://github.com/UltiRequiem/Flask-Taskapp"><img alt="Code style: black" src="https://img.shields.io/tokei/lines/github.com/UltiRequiem/Flask-Taskapp?color=blue&label=Total%20Lines"></a>
 </p>
 
+![Cover](./assets/cover.png)
+
 A taskapp that uses [Firebase](https://firebase.google.com).
 
 ## Development setup
