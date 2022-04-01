@@ -79,4 +79,3 @@ def logout():
     flash("Regresa pronto")
 
     return redirect(url_for("auth.login"))
-

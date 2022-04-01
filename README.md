@@ -12,9 +12,11 @@ A taskapp that uses [Firebase](https://firebase.google.com).
 
 ## Development setup
 
-1. Install Google Cloud SDK: Instructions [here](https://cloud.google.com/sdk/docs/install).
+1. Install Google Cloud SDK: Instructions
+   [here](https://cloud.google.com/sdk/docs/install).
 
-2. Create a project in google cloud: You can do this [here](https://console.cloud.google.com/projectcreate).
+2. Create a project in google cloud: You can do this
+   [here](https://console.cloud.google.com/projectcreate).
 
 3. Clone the proyect
 
@@ -60,8 +62,10 @@ python3 main.py
 
 Here is a working live demo: https://flask-platzi.ultirequiem.repl.co/auth/login
 
-At the moment it is running version [v0.7-alpha](https://github.com/UltiRequiem/Flask-Taskapp/releases/tag/v0.7-alpha), which did not implement a database yet.
-This is because I can't find a way to deploy it anywhere else without a credit card.
+At the moment it is running version
+[v0.7-alpha](https://github.com/UltiRequiem/Flask-Taskapp/releases/tag/v0.7-alpha),
+which did not implement a database yet. This is because I can't find a way to
+deploy it anywhere else without a credit card.
 
 **Current version: v1.0**
 

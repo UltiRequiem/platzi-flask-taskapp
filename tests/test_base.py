@@ -50,4 +50,3 @@ class MainTest(TestCase):
 
         response = self.client.post(url_for("auth.login"), data=fake_form)
         self.assertRedirects(response, url_for("index"))
-
